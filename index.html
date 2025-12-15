@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-seccion3">
         <div class="container">
-            <a class="navbar-brand" href="#seccion1"><i class="fas fa-utensils"></i>GAME AWARDS 2025</a>
+            <a class="navbar-brand" href="#seccion1"><i></i>GAME AWARDS 2025</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,6 +40,7 @@
     <header id="seccion1" class="bg-seccion1 text-white d-flex align-items-center" style="min-height: 100vh; padding-top: 56px;">
         <div class="container text-center py-5">
             <h1 class="display-2 fw-bold mb-4 eslogan">¡Elige a los Ganadores del GAME AWARDS 2025!</h1> 
+            <img src="images/nuevo logo.svg" alt="Kingdom Come: Deliverance II">
             <p class="lead mb-5">Explora a los juegos nominados para Juego del Año. Tu voto decide al campeón de esta edición.</p>
             <a href="#seccion2" class="btn btn-warning btn-lg fw-bold text-dark">VER NOMINADOS A GOTY</a>
         </div>
@@ -195,7 +196,56 @@
 
             </div>
         </div>
+        <div class="text-center my-4">
+        <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#videoModal">
+            Ver Videotutorial
+        </button>
+    </div>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Videotutorial</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <video id="miVideo" width="100%" src="videos/VideoTarea4.mp4"></video>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" id="playBtn">Play</button>
+                    <button type="button" class="btn btn-secondary" id="pauseBtn">Pause</button>
+                    <button type="button" class="btn btn-danger" id="stopBtn">Stop</button>
+                    <button type="button" class="btn btn-info" id="volMinus">Vol-</button>
+                    <button type="button" class="btn btn-success" id="volPlus">Vol+</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </section>
+
+    <script>
+        const video = document.getElementById('miVideo');
+
+        document.getElementById('playBtn').addEventListener('click', () => video.play());
+        document.getElementById('pauseBtn').addEventListener('click', () => video.pause());
+        document.getElementById('stopBtn').addEventListener('click', () => { 
+            video.pause(); 
+            video.currentTime = 0; 
+        });
+        document.getElementById('volMinus').addEventListener('click', () => { 
+            if(video.volume > 0) video.volume = Math.max(0, video.volume - 0.1); 
+        });
+        document.getElementById('volPlus').addEventListener('click', () => { 
+            if(video.volume < 1) video.volume = Math.min(1, video.volume + 0.1); 
+        });
+
+        const modalElement = document.getElementById('videoModal');
+        modalElement.addEventListener('hidden.bs.modal', () => {
+            video.pause();
+            video.currentTime = 0;
+        });
+    </script>
 
     <section id="seccion4" class="bg-seccion2 py-5">
         <div class="container">
@@ -203,7 +253,7 @@
                 <div class="col-12 col-md-6 mb-4">
                     <h5 class="text-uppercase mb-4 fw-bold text-primary"><i class="fas fa-id-badge"></i> Contacto</h5>
                     <p><i class="fas fa-home me-3"></i> C/ Giralda, 45, Sevilla, España</p>
-                    <p><i class="fas fa-envelope me-3"></i> <a href="mailto:info@restaurante.com" class="text-black">info@restaurante.com</a></p>
+                    <p><i class="fas fa-envelope me-3"></i> <a href="mailto:info@gameawards.com" class="text-black">info@gameawards.com</a></p>
                     <p><i class="fas fa-phone me-3"></i> +34 954 XXX XXX</p>
                     
                     <h5 class="text-uppercase mt-4 mb-3 fw-bold text-primary">Redes Sociales</h5>
